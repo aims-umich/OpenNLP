@@ -15,7 +15,7 @@ from opennlp.run.ml import ClassicalML
 
 # Create an instance from the class
 # Test size is set as 0.2 (Default), users can change it. 
-classical_ml=ClassicalML(data_path='./data/sample_sentiment.csv', # Your data path
+classical_ml=ClassicalML(data_path='../data/sample_sentiment.csv', # Your data path
                          input_col='tweets', # Your data input column
                          output_col='labels', # Your data output column
                          seed=42) # Your random seed
@@ -24,16 +24,16 @@ classical_ml=ClassicalML(data_path='./data/sample_sentiment.csv', # Your data pa
 classical_ml.run_DecisionTree()
 
 # Run random forest
-classical_ml.run_RandomForest(n_estimators=200)
+classical_ml.run_RandomForest(n_estimators=10)
 
 # Run MNB
 classical_ml.run_MNB(alpha=1.0)
 
 # Run Gradboost
-classical_ml.run_GradBoost(n_estimators=200)
+classical_ml.run_GradBoost(n_estimators=10)
 
 # Run Adaboost
-classical_ml.run_AdaBoost(n_estimators=200)
+classical_ml.run_AdaBoost(n_estimators=10)
 
 # Run SVC
 classical_ml.run_SVC()

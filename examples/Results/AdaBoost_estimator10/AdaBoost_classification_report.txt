@@ -1,0 +1,9 @@
+              precision    recall  f1-score   support
+
+           0       0.83      0.22      0.35      2019
+           1       0.55      0.96      0.69      1981
+
+    accuracy                           0.58      4000
+   macro avg       0.69      0.59      0.52      4000
+weighted avg       0.69      0.58      0.52      4000
+RUNTIME AdaBoost : 3.090197801589966

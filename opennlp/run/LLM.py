@@ -38,12 +38,12 @@ class BERT():
     """
 
     def __init__(self,
-                 user_split:bool,
                  input_col:str,output_col:str, num_class:int, 
                  data_path=None,
                  train_filepath=None,
                  test_filepath=None,
                  lineterminator=None,
+                 user_split=False,
                  max_length=128,test_size=0.2,val_size=0.1,seed=42,
                  encoding='utf-8'): 
         D=data_processor(user_split=user_split,
@@ -340,7 +340,6 @@ class GPT():
     :param seed: (int) random seed for train and test split. 
     """
     def __init__(self,
-                 user_split:bool,
                  input_col:str,
                  output_col:str,
                  num_class:int,
@@ -348,6 +347,7 @@ class GPT():
                  train_filepath=None,
                  test_filepath=None,
                  lineterminator=None,
+                 user_split=False,
                  max_length=128,test_size=0.2,val_size=0.1,seed=42,encoding='utf-8'): # Model name should be BERT,GPT or LLAMA
         
         D=data_processor(user_split=user_split,
@@ -593,12 +593,12 @@ class Llama():
     :param seed: (int) random seed for train and test split. 
     """
     def __init__(self,
-                 user_split:bool,
                  input_col:str,output_col:str,num_class:str,
                  data_path=None,
                  train_filepath=None,
                  test_filepath=None,
                  lineterminator=None,
+                 user_split=False,
                  max_length=128,test_size=0.2,val_size=0.1,seed=42,
                  encoding='utf-8'): # Model name should be BERT,GPT or LLAMA
         print("initializing Llama2...")

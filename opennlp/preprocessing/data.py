@@ -18,7 +18,7 @@ class data_processor():
     """
     def __init__(self,
                  user_split:bool,
-                 input_col:str,
+                 input_col:str,   #this needs to be changed 
                  output_col:str,
                  encoding:str,
                  path=None,
@@ -90,7 +90,8 @@ class data_processor():
             self.df=self.label_converter(df=self.df)
             self.df=self.df[[self.input_col,self.output_col]]
         print(f"Dataset before processing...")
-
+        
+        #print(self.df)
         # BERT need special tokenizer type 
         if checkpoint=='bert-base-uncased':
             tokenizer=AutoTokenizer.from_pretrained(checkpoint)
@@ -100,8 +101,8 @@ class data_processor():
             tokenizer.pad_token=tokenizer.eos_token
         
         if not self.user_split:
-            X=self.X
-            y=self.y
+            X=self.df[self.input_col]
+            y=self.df[self.output_col]
             X_train,X_test,y_train,y_test=train_test_split(X,y,
                                                         test_size=test_size,
                                                         random_state=seed)
@@ -133,17 +134,17 @@ class data_processor():
         X_train_tensor=[tokenizer(str(text),return_tensors='pt',
                                 max_length=max_length,
                                 truncation=True,
-                                pad_to_max_length=True)['input_ids']
+                                padding='max_length')['input_ids']
                                 for text in X_train_text]
         X_test_tensor=[tokenizer(str(text),return_tensors='pt',
                                 max_length=max_length,
                                 truncation=True,
-                                pad_to_max_length=True)['input_ids']
+                                padding='max_length')['input_ids']
                                 for text in X_test_text]
         X_val_tensor=[tokenizer(str(text),return_tensors='pt',
                                 max_length=max_length,
                                 truncation=True,
-                                pad_to_max_length=True)['input_ids']
+                                padding='max_length')['input_ids']
                                 for text in X_val_text]
 
         # Convert list to tensor
@@ -155,17 +156,17 @@ class data_processor():
         X_train_mask=[tokenizer(str(text),return_tensors='pt',
                                 max_length=max_length,
                                 truncation=True,
-                                pad_to_max_length=True)['attention_mask']
+                                padding='max_length')['attention_mask']
                                 for text in X_train]
         X_test_mask=[tokenizer(str(text),return_tensors='pt',
                                 max_length=max_length,
                                 truncation=True,
-                                pad_to_max_length=True)['attention_mask']
+                                padding='max_length')['attention_mask']
                                 for text in X_test]
         X_val_mask=[tokenizer(str(text),return_tensors='pt',
                                 max_length=max_length,
                                 truncation=True,
-                                pad_to_max_length=True)['attention_mask']
+                                padding='max_length')['attention_mask']
                                 for text in X_val]     
         # Squeeze
         X_train_mask=torch.squeeze(torch.stack(X_train_mask),dim=1)

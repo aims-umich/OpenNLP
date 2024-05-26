@@ -10,8 +10,12 @@ Runtime of the model will be proportional to the number of parameters.
 
 from opennlp.run.LLM import BERT,GPT,Llama
 
+#Loading Llama using Token from Mohammed's (malradai) hugging face
+from huggingface_hub import login
+login(token='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')
+
 # Constants
-data_path='./data/sample_sentiment.csv'
+data_path='../data/sample_sentiment.csv'
 input_col='tweets'
 output_col='labels'
 epochs=1
@@ -22,6 +26,7 @@ lr=1e-5
 bert=BERT(data_path=data_path,
           input_col=input_col, 
           output_col=output_col,
+          user_split=False,
           num_class=2)
 
 gpt=GPT(data_path=data_path,
@@ -33,7 +38,7 @@ llama=Llama(data_path=data_path,
           input_col=input_col, 
           output_col=output_col,
           num_class=2)
-'''
+
 bert.run_BERT(epochs=epochs,
               bs=bs,
               lr=lr,
@@ -43,8 +48,8 @@ gpt.run_GPT(epochs=epochs,
               bs=bs,
               lr=lr,
               save_every=1)
-'''
-llama.run_LLAMA(epochs=epochs,
-              bs=8,
-              lr=lr,
-              save_every=1)
+
+#llama.run_LLAMA(epochs=epochs,
+#              bs=8,
+#              lr=lr,
+#              save_every=1)

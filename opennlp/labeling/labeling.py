@@ -10,7 +10,7 @@ License: n/a
 import argparse
 import pandas as pd
 import statistics
-from pattern.en import sentiment
+#from pattern.en import sentiment
 import stanza
 import tweetnlp
 from textblob import TextBlob
@@ -33,8 +33,8 @@ class label():
     :param tools: (str) specify the tools for sentiment analysis. Default=``all``
     """
     def __init__(self,fileName:str):
-        self.Tool_list=['TextBlob','VADER','Stanza','pattern','TweetNLP','TwitRoBERT','pysentiLM']
-        self.default='TextBlob VADER Stanza pattern TweetNLP TwitRoBERT pysentiLM'
+        self.Tool_list=['TextBlob','VADER','Stanza','TweetNLP','TwitRoBERT','pysentiLM']
+        self.default='TextBlob VADER Stanza TweetNLP TwitRoBERT pysentiLM'
         self.fileName=fileName
         self.listOfScores=[]
         self.listOfTools=self.Tool_list
@@ -102,9 +102,9 @@ class label():
         print("Successfully set-up VADER")
 
         #pattern
-        from pattern.en import sentiment
-        self.df['pattern']=''
-        print("Successfully set-up pattern")
+        #from pattern.en import sentiment
+        #self.df['pattern']=''
+        #print("Successfully set-up pattern")
 
 
         #TweetNLP 
@@ -190,10 +190,10 @@ class label():
             self.listOfScores.append(vaderVal)
 
             # PATTERN
-            patternVal=sentiment(text)[0]
-            self.df.at[indx,'pattern']= patternVal
-            tempSum=tempSum+patternVal
-            self.listOfScores.append(patternVal)
+            #patternVal=sentiment(text)[0]
+            #self.df.at[indx,'pattern']= patternVal
+            #tempSum=tempSum+patternVal
+            #self.listOfScores.append(patternVal)
 
             # TWEETNLP
             labelVar=model.sentiment(text)['label']

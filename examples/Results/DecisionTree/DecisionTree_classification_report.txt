@@ -1,0 +1,9 @@
+              precision    recall  f1-score   support
+
+           0       0.70      0.68      0.69      2019
+           1       0.68      0.70      0.69      1981
+
+    accuracy                           0.69      4000
+   macro avg       0.69      0.69      0.69      4000
+weighted avg       0.69      0.69      0.69      4000
+RUNTIME DecisionTree : 4.524672031402588

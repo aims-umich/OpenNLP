@@ -1,0 +1,9 @@
+              precision    recall  f1-score   support
+
+           0       0.79      0.67      0.73      2068
+           1       0.70      0.80      0.75      1932
+
+    accuracy                           0.74      4000
+   macro avg       0.74      0.74      0.74      4000
+weighted avg       0.74      0.74      0.74      4000
+RUNTIME LSTM : 29.354135274887085
