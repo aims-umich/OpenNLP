@@ -14,7 +14,7 @@ source ~/miniconda3/etc/profile.d/conda.sh
 if [ $mode == "install" ]; then
   conda create --name testnlp python=3.10 -y
   conda activate testnlp
-  pip install .
+  pip install -e ".[dev]"
 else
   conda deactivate
   conda remove -n testnlp --all -y

@@ -14,30 +14,30 @@ from opennlp.run.LLM import BERT,GPT,Llama
 from huggingface_hub import login
 login(token='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')
 
-# Constants
-data_path='../data/sample_sentiment.csv'
-input_col='tweets'
-output_col='labels'
-epochs=1
-bs=32
-lr=1e-5
+# user inputs
+data_path='../data/sample_sentiment.csv'    #sample dataset in opennlp
+input_col='tweets'                          #the header of the input column (usually the text)
+output_col='labels'                         #the header of the output column (the discrete label) 
+epochs=1                    #number of epochs, increase to 5 for better performance
+bs=32                       #batch size
+lr=1e-5                     #learning rate
 
 # Create instances from the classes.
 bert=BERT(data_path=data_path,
           input_col=input_col, 
           output_col=output_col,
-          user_split=False,
-          num_class=2)
+          user_split=False,   #if you are providing a seperate test set 
+          num_class=2)        #positive (1) and negative (0) 
 
 gpt=GPT(data_path=data_path,
           input_col=input_col, 
           output_col=output_col,
-          num_class=2)
+          num_class=2)        #positive (1) and negative (0) 
 
 llama=Llama(data_path=data_path,
           input_col=input_col, 
           output_col=output_col,
-          num_class=2)
+          num_class=2)        #positive (1) and negative (0) 
 
 bert.run_BERT(epochs=epochs,
               bs=bs,
@@ -47,7 +47,9 @@ bert.run_BERT(epochs=epochs,
 gpt.run_GPT(epochs=epochs,
               bs=bs,
               lr=lr,
-              save_every=1)
+              save_every=1)      #save the model weights every epoch(s)
+
+#Llama is a bit expensive, uncomment this if you have a very good GPU
 
 #llama.run_LLAMA(epochs=epochs,
 #              bs=8,

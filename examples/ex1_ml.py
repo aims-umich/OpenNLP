@@ -1,23 +1,23 @@
 """ 
             Ex 1. Running Classical ML Models using OpenNLP
 
-OpenNLP provides 6 classical machine learning tools for NLP. 
-1. Decision Tree
-2. Random Forest 
+OpenNLP provides variety of classical machine learning tools. In this example, we use: 
+1. Decision Trees
+2. Random Forests 
 3. Multinomial Bayesian classification model
-4. Gradient Boost 
+4. Gradient Boosting 
 5. Adaboost 
-6. Lineaer SVC
+6. Linear SVC
 """
 
 # Import denpendencies 
 from opennlp.run.ml import ClassicalML
 
 # Create an instance from the class
-# Test size is set as 0.2 (Default), users can change it. 
-classical_ml=ClassicalML(data_path='../data/sample_sentiment.csv', # Your data path
-                         input_col='tweets', # Your data input column
-                         output_col='labels', # Your data output column
+# Test size is set as 0.2 (Default), user can change it. 
+classical_ml=ClassicalML(data_path='../data/sample_sentiment.csv',  #sample dataset in opennlp
+                         input_col='tweets',   #the header of the input column (usually the text)
+                         output_col='labels', #the header of the output column (the discrete label)
                          seed=42) # Your random seed
 
 # Run Decision Tree
