@@ -1,9 +1,0 @@
-              precision    recall  f1-score   support
-
-           0       0.72      0.81      0.76      2019
-           1       0.78      0.68      0.73      1981
-
-    accuracy                           0.75      4000
-   macro avg       0.75      0.75      0.75      4000
-weighted avg       0.75      0.75      0.75      4000
-RUNTIME MNB : 0.004336357116699219
