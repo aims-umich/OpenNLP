@@ -5,6 +5,7 @@
 #find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 #python3 setup.py sdist bdist_wheel
 #twine check dist/*
+#twine upload --username mradaideh --password miar1991 dist/*
 
 mode=$1
 
